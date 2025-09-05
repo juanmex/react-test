@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    working_dir: /app
+    volumes:
+      - .:/app
+      #- npm_cache:/root/.npm
+    ports:
+      - "5173:5173"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    # user: "${UID:-1000}:${GID:-1000}"  # opcional en Linux para permisos
+    restart: unless-stopped
