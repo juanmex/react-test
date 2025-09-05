@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../../components/Button";
-
-type DateFilterFormProps = {
-  initialStart?: string;
-  initialEnd?: string;
-  onSearch: (values: { start_date: string; end_date: string }) => void;
-  onClear: () => void;
-};
+import { DateFilterFormProps } from "../types";
 
 export default function Filter({
   initialStart = "",

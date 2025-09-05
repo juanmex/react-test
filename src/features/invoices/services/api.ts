@@ -1,31 +1,6 @@
 import { api } from "../../../lib/api/Client";
-
-export type Invoice = {
-  id: number;
-  invoice_number: string;
-  total: string;
-  invoice_date: string;
-  status: string;
-  active: boolean;
-};
-
-export type PaginationResponse<T> = {
-  data: T[];
-  meta: {
-    pages: number;
-    page: number;
-    per_page: number;   
-    total: number;      
-    count: number;     
-  };
-};
-
-export type InvoicesParams = {
-  page?: number;
-  per_page?: number;
-  start_date?: string;
-  end_date?: string;
-};
+import { PaginationResponse } from "../../../types/pagination";
+import { InvoicesParams, Invoice } from "../types";
 
 function buildQuery(params: InvoicesParams) {
   const query = new URLSearchParams();
@@ -37,6 +12,7 @@ function buildQuery(params: InvoicesParams) {
     });
   return query.toString();
 }
+
 export async function getInvoices(
   params: InvoicesParams = {}
 ): Promise<PaginationResponse<Invoice>> {

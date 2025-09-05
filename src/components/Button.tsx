@@ -1,8 +1,5 @@
 import React from "react";
-
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "ghost";
-};
+import { ButtonProps } from "./types";
 
 export default function Button({
   variant = "primary",

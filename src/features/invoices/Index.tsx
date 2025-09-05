@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Table from "../../components/Table";
 import Filter from "./components/Filter";
 import Pagination from "../../components/Pagination";
-import { getInvoices, Invoice } from "./services/api";
+import { getInvoices } from "./services/api";
+import { Invoice } from "./types";
 
 export default function InvoicesIndex() {
   const headers = [

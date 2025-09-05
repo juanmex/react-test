@@ -1,23 +1,13 @@
 import React from "react";
-
-type PaginationProps = {
-  count: number;     // total items
-  pages: number;     // total pages
-  page: number;      // current page (1-based)
-  per_page: number;  // items per page
-  onChange?: (nextPage: number) => void; // fired when user clicks a page
-  maxNumbers?: number; // how many numeric buttons to show (default 7)
-};
+import { PaginationProps } from "../types/pagination";
 
 function buildPageRange(current: number, total: number, maxNumbers = 7): (number | "...")[] {
-  // Always show first & last, center around current, add ellipses when needed
   if (total <= maxNumbers) return Array.from({ length: total }, (_, i) => i + 1);
 
   const side = Math.floor((maxNumbers - 3) / 2);  // space around current (leaving first/last/ellipses)
   let start = Math.max(2, current - side);
   let end   = Math.min(total - 1, current + side);
 
-  // Adjust window when near edges
   const remaining = (maxNumbers - 2) - (end - start + 1);
   if (remaining > 0) {
     if (start === 2) end = Math.min(total - 1, end + remaining);

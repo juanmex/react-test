@@ -1,15 +1,5 @@
 import React from "react";
-
-type Header<T extends string = string> = {
-  key: T;       
-  label: string;
-};
-
-type TableProps<T extends Record<string, any>> = {
-  headers: Header[];
-  rows: T[];
-  rowKey?: (row: T, idx: number) => string | number;
-};
+import { TableProps } from "./types";
 
 export default function Table<T extends Record<string, any>>({
   headers,
