@@ -27,7 +27,7 @@ export default function Table<T extends Record<string, any>>({
               >
                 {headers.map((h) => (
                   <td key={h.key} className="text-sm p-2">
-                    {row[h.key]}
+                    {h.format ? h.format(row[h.key]) : row[h.key]}
                   </td>
                 ))}
               </tr>

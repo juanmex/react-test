@@ -8,10 +8,24 @@ import { Invoice } from "./types";
 export default function InvoicesIndex() {
   const headers = [
     { key: "invoice_number", label: "Factura" },
-    { key: "total", label: "Total" },
-    { key: "invoice_date", label: "Fecha" },
+    { key: "total", label: "Total", format: (value: number) => (
+      <span>
+        {new Intl.NumberFormat("es-MX", {
+          style: "currency",
+          currency: "MXN",
+        }).format(value)}
+      </span>
+    )},
+    { key: "invoice_date", label: "Fecha", format: (value: string) =>
+      new Date(value).toLocaleDateString("es-MX", { year: "numeric", month: "short", day: "numeric" }),
+    },
     { key: "status", label: "Status" },
-    { key: "active", label: "Activo" },
+    { key: "active", label: "Activo", format: (value: boolean) =>
+      value ? (
+        <span className="text-green-600">✔️</span>
+      ) : (
+        <span className="text-red-600">❌</span>
+      )},
   ];
 
   const [rows, setRows] = useState<Invoice[]>([]);

@@ -13,3 +13,10 @@ export type InvoicesParams = {
   start_date?: string;
   end_date?: string;
 };
+
+export type DateFilterFormProps = {
+  initialStart?: string;
+  initialEnd?: string;
+  onSearch: (values: { start_date: string; end_date: string }) => void;
+  onClear: () => void;
+};

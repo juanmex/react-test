@@ -5,6 +5,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 export type Header<T extends string = string> = {
   key: T;       
   label: string;
+  format?: (value: any) => React.ReactNode;
 };
 
 export type TableProps<T extends Record<string, any>> = {
